@@ -2,13 +2,13 @@ using System;
 
 namespace Class3
 {
-    class mylist
+    class mylist<T>
     {
-        protected mylist next;
-        protected mylist prev;
-        protected int l;
+        protected mylist<T> next;
+        protected mylist<T> prev;
+        protected T l;
         protected int r;
-        public mylist Next
+        public mylist<T> Next
         {
             get
             {
@@ -20,7 +20,7 @@ namespace Class3
             }
         }
 
-        public mylist Prev
+        public mylist<T> Prev
         {
             get
             {
@@ -32,7 +32,7 @@ namespace Class3
             }
         }
 
-        public int L
+        public T L
         {
             get
             {
@@ -43,7 +43,7 @@ namespace Class3
                 l = value;
             }
         }
-        public mylist(mylist nxt, mylist prv, int k)
+        public mylist(mylist<T> nxt, mylist<T> prv, int k)
         {
             Next = nxt;
             Prev = prv;
@@ -68,14 +68,14 @@ namespace Class3
         }
     }
 
-    class Mylist
+    class Mylist<T>
     {
-        protected mylist current;
-        public mylist pointer;
+        protected mylist<T> current;
+        public mylist<T> pointer;
         /*****************************************************************************************************************************************/
-        public void Addpoint(int m)               //
+        public void Addpoint(T m)               //
         {
-            mylist added = new mylist(null,current, m);
+            mylist<T> added = new mylist<T>(null,current, m);
             if (current.Next == null)
             {
                 current.Next = added;
@@ -92,7 +92,7 @@ namespace Class3
         {
             if (pointer.Next != null)
             {
-                mylist inst;
+                mylist<T> inst;
                 inst = pointer;
                 pointer = pointer.Next;
                 pointer.Prev = inst;
@@ -108,7 +108,7 @@ namespace Class3
         {
             if (pointer.Prev != null)
             {
-                mylist inst;
+                mylist<T> inst;
                 inst = pointer;
                 pointer = pointer.Prev;
                 pointer.Next = inst;
@@ -152,7 +152,7 @@ namespace Class3
             return pointer.L;
         }
 
-        public Mylist(int m)
+        public Mylist(T m)
         {
             current = new mylist(null, null, m);
             current.R = 1;
@@ -168,7 +168,7 @@ namespace Class3
     {
         public static void Main()
         {
-            Mylist m1 = new Mylist(2);
+            Mylist<int> m1 = new Mylist<int>(2);
             m1.Addpoint(3);
             m1.Addpoint(4);
             m1.Addpoint(6);
